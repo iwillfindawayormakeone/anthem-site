@@ -210,7 +210,7 @@ function App() {
             
             <div className="pitch-image video-focused" style={{ padding: 0, background: '#000' }}>
               <video 
-                src="/performance.mp4" 
+                src="/new-performance.mp4" 
                 controls 
                 controlsList="nodownload"
                 style={{ width: '100%', height: '100%', objectFit: 'contain', position: 'absolute', top: 0, left: 0, zIndex: 5 }}

@@ -95,7 +95,7 @@ function App() {
                  </div>
               </div>
               <div className="ticker-footer">
-                 People have signed up so far. <br/>(Updated every Monday)
+                 People have signed up so far to sing with us on <strong>June 14th, 2026</strong>. <br/>(Updated every Monday)
               </div>
             </div>
 

@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { CheckCircle2, ChevronRight, X, AlertTriangle } from 'lucide-react';
+import React, { useState } from 'react';
+import { CheckCircle2, ChevronRight } from 'lucide-react';
 
 function App() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [showWarningPopup, setShowWarningPopup] = useState(false);
-
-  useEffect(() => {
-    // Show popup after 5 seconds to create urgency
-    const timer = setTimeout(() => {
-      setShowWarningPopup(true);
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const formatPhoneNumber = (value: string) => {
     if (!value) return value;
@@ -53,29 +44,6 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* URGENCY POPUP */}
-      {showWarningPopup && (
-        <div className="popup-overlay">
-          <div className="popup-content">
-            <button className="popup-close" onClick={() => setShowWarningPopup(false)}>
-              <X size={24} />
-            </button>
-            <div className="popup-alert"><AlertTriangle size={24} /> URGENT UPDATE</div>
-            <h2>Spots are disappearing FAST!</h2>
-            <p>We're close to reaching our max of <strong>75 guys</strong> and you can fill that gap!</p>
-            <button 
-              className="cta-button primary popup-cta"
-              onClick={() => {
-                setShowWarningPopup(false);
-                document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Secure My Spot NOW <ChevronRight size={20} />
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* HEADER */}
       <header className="navbar">
         <div className="container">

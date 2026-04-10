@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, CheckCircle2, ChevronRight, X, AlertTriangle } from 'lucide-react';
+import { CheckCircle2, ChevronRight, X, AlertTriangle } from 'lucide-react';
 
 function App() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
@@ -86,7 +86,7 @@ function App() {
             </p>
             
             <div className="video-card glass-panel">
-              <div className="video-thumbnail" style={{ padding: 0, background: '#000', overflow: 'hidden' }}>
+              <div className="video-thumbnail vertical" style={{ padding: 0, background: '#000', overflow: 'hidden' }}>
                 <video 
                   src="/promo.mp4" 
                   controls 

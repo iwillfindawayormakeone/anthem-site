@@ -283,6 +283,13 @@ h3 {
   transition: transform 0.3s ease;
 }
 
+.video-thumbnail.vertical {
+  aspect-ratio: 9/16;
+  max-height: 500px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
 .video-thumbnail:hover {
   background: linear-gradient(45deg, var(--nat-blue-dark), var(--nat-red-dark));
 }

@@ -86,9 +86,13 @@ function App() {
             </p>
             
             <div className="video-card glass-panel">
-              <div className="video-thumbnail">
-                <Play className="play-icon" size={48} />
-                <div className="video-overlay-text">Message from John David Maybury</div>
+              <div className="video-thumbnail" style={{ padding: 0, background: '#000', overflow: 'hidden' }}>
+                <video 
+                  src="/promo.mp4" 
+                  controls 
+                  controlsList="nodownload"
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                />
               </div>
               <div className="video-caption">
                 "I guess you're watching this because you think it would be cool to sing the national anthem in front of thousands of people... What's stopping you?"

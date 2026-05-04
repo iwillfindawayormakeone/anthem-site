@@ -88,9 +88,9 @@ function App() {
             <div className="momentum-ticker glass-panel">
               <div className="ticker-label">Event Momentum</div>
               <div className="ticker-numbers">
-                 <div className="ticker-new">21</div>
+                 <div className="ticker-new">41</div>
                  <div className="ticker-old" style={{ transform: 'rotate(3deg)' }}>
-                   14
+                   21
                    <div className="ticker-slash"></div>
                  </div>
               </div>
@@ -218,15 +218,44 @@ function App() {
             </div>
 
             <div className="action-marquee bottom">
-              <div className="marquee-content reverse">
+              <div className="marquee-content reverse" style={{ animationDuration: '60s' }}>
                  <span className="singer-name alt-color">John David Maybury will be singing!</span>
                  <span className="singer-name alt-color">Bob Hirsh will be singing!</span>
                  <span className="singer-name alt-color">Stanley Marcuss will be singing!</span>
                  <span className="singer-name alt-color">Miles Luther will be singing!</span>
+                 <span className="singer-name alt-color">Brian Kuhn will be singing!</span>
+                 <span className="singer-name alt-color">Justin Kirby II will be singing!</span>
+                 <span className="singer-name alt-color">Christopher Limjuco will be singing!</span>
+                 <span className="singer-name alt-color">Collin Wicker will be singing!</span>
+                 <span className="singer-name alt-color">Robert Korsan will be singing!</span>
+                 <span className="singer-name alt-color">Ryan Gravelle will be singing!</span>
+                 <span className="singer-name alt-color">Daniel Robinson will be singing!</span>
+                 <span className="singer-name alt-color">Patrick Wathen will be singing!</span>
+                 <span className="singer-name alt-color">John Machado will be singing!</span>
+                 <span className="singer-name alt-color">Anthony Richardson will be singing!</span>
+                 <span className="singer-name alt-color">Joshua Butson will be singing!</span>
+                 <span className="singer-name alt-color">John Terrill will be singing!</span>
+                 <span className="singer-name alt-color">Bob Ruckle will be singing!</span>
+                 <span className="singer-name alt-color">Jim Lake will be singing!</span>
+                 {/* Duplicate the list so it seamlessly loops from -50% */}
                  <span className="singer-name alt-color">John David Maybury will be singing!</span>
                  <span className="singer-name alt-color">Bob Hirsh will be singing!</span>
                  <span className="singer-name alt-color">Stanley Marcuss will be singing!</span>
                  <span className="singer-name alt-color">Miles Luther will be singing!</span>
+                 <span className="singer-name alt-color">Brian Kuhn will be singing!</span>
+                 <span className="singer-name alt-color">Justin Kirby II will be singing!</span>
+                 <span className="singer-name alt-color">Christopher Limjuco will be singing!</span>
+                 <span className="singer-name alt-color">Collin Wicker will be singing!</span>
+                 <span className="singer-name alt-color">Robert Korsan will be singing!</span>
+                 <span className="singer-name alt-color">Ryan Gravelle will be singing!</span>
+                 <span className="singer-name alt-color">Daniel Robinson will be singing!</span>
+                 <span className="singer-name alt-color">Patrick Wathen will be singing!</span>
+                 <span className="singer-name alt-color">John Machado will be singing!</span>
+                 <span className="singer-name alt-color">Anthony Richardson will be singing!</span>
+                 <span className="singer-name alt-color">Joshua Butson will be singing!</span>
+                 <span className="singer-name alt-color">John Terrill will be singing!</span>
+                 <span className="singer-name alt-color">Bob Ruckle will be singing!</span>
+                 <span className="singer-name alt-color">Jim Lake will be singing!</span>
               </div>
             </div>
           </div>

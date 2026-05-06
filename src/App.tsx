@@ -68,6 +68,12 @@ function App() {
             <p className="hero-subtitle">
               Wouldn't you LOVE to be a Nationals Fan that has ALSO opened the game with the Star Spangled Banner? <strong>And thousands of people will hear it and LOVE IT.</strong>
             </p>
+
+            <div className="lesson-notice" style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '1.25rem', borderRadius: '12px', marginBottom: '2rem', borderLeft: '4px solid var(--primary-red)' }}>
+              <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: '1.5', textAlign: 'left' }}>
+                <strong>🎙️ Here for the Free Vocal Lessons?</strong> You're exactly where you need to be! Sign up below to get your free lessons. <em>(Joining us on the field for the National Anthem is completely optional—zero pressure!)</em>
+              </p>
+            </div>
             
             <div className="video-card glass-panel">
               <div className="video-thumbnail vertical" style={{ padding: 0, background: '#000', overflow: 'hidden' }}>
@@ -111,7 +117,7 @@ function App() {
               ) : (
                 <>
                   <h3 className="form-title">Claim Your Spot</h3>
-                  <p className="form-desc">Fill out the form and I'll get right back to you with a personal call to let you know how to do that.</p>
+                  <p className="form-desc">Fill out the form to get your free vocal lessons. I'll get right back to you with a personal call to get you started (and we can chat about the Nationals game if you're interested!).</p>
                   
                   <form onSubmit={handleSubmit} className="form-fields">
                     <div className="input-group">

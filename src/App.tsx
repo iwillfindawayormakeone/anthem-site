@@ -63,15 +63,19 @@ function App() {
           <div className="hero-content">
             <div className="badge">June 14th, 2026 • Nationals Game</div>
             <h1 className="hero-title">
-              <span className="highlight">Fellas,</span> thought it'd be cool to <span className="highlight-sing">sing</span> the National Anthem at a Nationals game? <span className="yup-stamp">YUP!</span>
+              <span className="highlight">Free</span> In-Person Voice Lessons in DC
             </h1>
             <p className="hero-subtitle">
-              Wouldn't you LOVE to be a Nationals Fan that has ALSO opened the game with the Star Spangled Banner? <strong>And thousands of people will hear it and LOVE IT.</strong>
+              Get premium vocal coaching for <span style={{ textDecoration: 'line-through', opacity: 0.7 }}>$112</span> <strong style={{ color: 'var(--nat-red)', fontSize: '1.2em' }}>FREE</strong>!
+              <br/>
+              <em>(And if you want, singing in the National Anthem game!)</em>
             </p>
 
-            <div className="lesson-notice" style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '1.25rem', borderRadius: '12px', marginBottom: '2rem', borderLeft: '4px solid var(--primary-red)' }}>
+            <div className="lesson-notice" style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '1.25rem', borderRadius: '12px', marginBottom: '2rem', borderLeft: '4px solid var(--nat-red)' }}>
               <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: '1.5', textAlign: 'left' }}>
-                <strong>🎙️ Here for the Free Vocal Lessons?</strong> You're exactly where you need to be! Sign up below to get your free lessons. <em>(Joining us on the field for the National Anthem is completely optional—zero pressure!)</em>
+                <strong>⚾ Fellas, thought it'd be cool to sing the National Anthem at a Nationals game? <span className="yup-stamp" style={{ fontSize: '1.1rem', padding: '0.1rem 0.5rem', transform: 'rotate(-5deg) translateY(-2px)', margin: '0 0 0 6px', boxShadow: '2px 2px 0px var(--nat-red)' }}>YUP!</span></strong>
+                <br/><br/>
+                Wouldn't you LOVE to be a Nationals Fan that has ALSO opened the game with the Star Spangled Banner? Thousands of people will hear it and LOVE IT. <em>(Optional add-on to your free lessons)</em>
               </p>
             </div>
             
@@ -91,6 +95,16 @@ function App() {
           </div>
 
           <div className="hero-form-wrapper" id="register">
+            <div className="momentum-ticker glass-panel" style={{ border: '3px solid var(--nat-red)' }}>
+              <div className="ticker-label" style={{ color: 'var(--nat-red)' }}>Limited Availability</div>
+              <div className="ticker-numbers">
+                 <div className="ticker-new">6</div>
+              </div>
+              <div className="ticker-footer">
+                 <strong>Free Voice Lessons</strong> left to claim!
+              </div>
+            </div>
+
             <div className="momentum-ticker glass-panel">
               <div className="ticker-label">Event Momentum</div>
               <div className="ticker-numbers">
@@ -117,7 +131,7 @@ function App() {
               ) : (
                 <>
                   <h3 className="form-title">Claim Your Spot</h3>
-                  <p className="form-desc">Fill out the form to get your free vocal lessons. I'll get right back to you with a personal call to get you started (and we can chat about the Nationals game if you're interested!).</p>
+                  <p className="form-desc">Fill out this form to get info on your free vocal lessons (or how to sing the Star-Spangled Banner with us!).</p>
                   
                   <form onSubmit={handleSubmit} className="form-fields">
                     <div className="input-group">

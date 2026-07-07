@@ -12,7 +12,9 @@
   --sage:        #7E9678;   /* soft sage */
   --sage-tint:   #E4EADC;   /* sage wash */
   --gold:        #D99A2B;   /* star gold — the accent, used sparingly */
+  --gold-ink:    #8A5C08;   /* darker gold for TEXT on light backgrounds (AA) */
   --gold-soft:   #F3D488;   /* pale gold */
+  --sage-ink:    #5C7355;   /* darker sage for small text (AA) */
   --ink:         #37332A;   /* deep warm charcoal */
   --ink-soft:    #6B6558;   /* secondary text */
   --white:       #FFFDF8;
@@ -76,7 +78,7 @@ a { color: var(--night); }
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
-  color: var(--gold);
+  color: var(--gold-ink);
   letter-spacing: 0.02em;
   margin-bottom: 0.75rem;
   display: flex; align-items: center; gap: 0.5rem;
@@ -89,7 +91,7 @@ a { color: var(--night); }
   letter-spacing: -0.01em;
   max-width: 22ch;
 }
-.section-title em { font-style: italic; color: var(--sage); }
+.section-title em { font-style: italic; color: #6A8163; }
 .section-title.center { margin-inline: auto; text-align: center; }
 .section-title.on-dark { color: var(--cream); }
 .section-title.on-dark em { color: var(--gold-soft); }
@@ -215,7 +217,7 @@ a { color: var(--night); }
   letter-spacing: -0.015em;
   margin-bottom: 0.4em;
 }
-.hero-title em { font-style: italic; color: var(--gold); }
+.hero-title em { font-style: italic; color: var(--gold-ink); }
 
 .hero-sub { font-size: 1.15rem; color: var(--ink-soft); max-width: 50ch; margin-bottom: 1.75rem; }
 
@@ -296,7 +298,7 @@ a { color: var(--night); }
 .prose p { max-width: 60ch; }
 .signature {
   font-family: var(--font-display); font-style: italic;
-  font-size: 1.6rem; color: var(--sage); margin: 0.25rem 0 1.5rem;
+  font-size: 1.6rem; color: #6A8163; margin: 0.25rem 0 1.5rem;
 }
 
 .cred-list { list-style: none; display: grid; gap: 0.65rem; margin-bottom: 2rem; }
@@ -580,7 +582,7 @@ a { color: var(--night); }
 }
 .price-label { font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 0.4rem; }
 .price { display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 0.4rem; }
-.price-amount { font-family: var(--font-display); font-size: 3rem; font-weight: 600; color: var(--night); }
+.price-amount { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 3rem); font-weight: 600; color: var(--night); }
 .price-per { color: var(--ink-soft); font-weight: 700; }
 .price-note { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1.4rem; }
 .price-includes { list-style: none; display: grid; gap: 0.6rem; margin-bottom: 1.8rem; }
@@ -727,7 +729,7 @@ a { color: var(--night); }
 .field textarea { resize: vertical; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-reassure { text-align: center; font-size: 0.88rem; color: var(--ink-soft); margin: 0.9rem 0 0; }
-.form-msg { margin: 0.75rem 0 0; font-weight: 700; color: var(--sage); }
+.form-msg { margin: 0.75rem 0 0; font-weight: 700; color: var(--sage-ink); }
 .form-msg:empty { display: none; }
 .form-msg.is-error { color: #B4552D; }
 

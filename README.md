@@ -1,61 +1,73 @@
-# Ariana's Little Star — In-Home Family Childcare
+# React + TypeScript + Vite
 
-A fast, self-contained static website: `index.html` + `/assets` (custom CSS, vanilla
-JS, AI-generated imagery). No build step, no framework, no dependencies.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Fill in your details
+Currently, two official plugins are available:
 
-Search `index.html` for these placeholders and replace every occurrence:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-| Placeholder | Where it appears |
-|---|---|
-| `[City/Area]` | title/meta tags, hero, footer, contact, schema |
-| `[Full Address]` | contact section, footer, schema |
-| `[Phone]` | contact, footer (also update the `tel:+10000000000` links next to it) |
-| `[Email]` | contact, footer (also update the `mailto:hello@example.com` links) |
-| `[License #]` | trust bar, about, safety, FAQ, footer, schema |
-| `[Years of Experience]` | trust bar, about |
-| `[Weekly Rate]` | pricing card, schema |
-| `[Hours e.g. 7:00 AM–5:30 PM]` | timeline, contact, footer |
+## React Compiler
 
-Also personalize:
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- **Stats counters** — in the About section, edit the `data-count` numbers
-  (years, families served) on the `.count` spans.
-- **Availability ribbon** — hero text "2 openings for Fall 2026".
-- **Canonical URL / Open Graph** — replace `https://arianaslittlestar.com/` in
-  `<head>` with your real domain.
-- **Forms** — the three forms (tour, waitlist, guide) show a local confirmation
-  until you connect a form service. Create a free form at
-  [formspree.io](https://formspree.io), then paste its endpoint URL into
-  `FORM_ENDPOINT` at the bottom of `assets/js/main.js`.
-- **Map** — replace the `.map-placeholder` block in the Contact section with your
-  Google Maps embed iframe (Google Maps → Share → Embed a map).
-- **Parent Handbook** — replace `assets/parent-handbook.pdf` with your real PDF.
-- **Testimonials** — replace the sample quotes with real ones as you collect them.
+## Expanding the ESLint configuration
 
-## Run it locally
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-Any static server works:
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-```bash
-python3 -m http.server 8080
-# then open http://localhost:8080
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## Deploy
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-The site auto-deploys to **GitHub Pages** on every push to `main`
-(`.github/workflows/deploy-pages.yml`) at:
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-> https://iwillfindawayormakeone.github.io/anthem-site/
-
-To use a custom domain instead: repo Settings → Pages → Custom domain, then
-update the canonical/OG URLs in `index.html`. Netlify, Cloudflare Pages, and
-Vercel also work (static site, no build command) if you ever want to switch.
-
-## Imagery
-
-All photos are AI-generated (Higgsfield Soul 2.0) — warm, film-like, and containing
-no identifiable real children. Regeneration prompts live in
-[IMAGE-BRIEFS.md](IMAGE-BRIEFS.md).
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

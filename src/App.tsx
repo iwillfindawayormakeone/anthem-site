@@ -1,0 +1,288 @@
+import React, { useState } from 'react';
+import { CheckCircle2, ChevronRight } from 'lucide-react';
+
+function App() {
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const formatPhoneNumber = (value: string) => {
+    if (!value) return value;
+    const phoneNumber = value.replace(/[^\d]/g, '');
+    const phoneNumberLength = phoneNumber.length;
+    if (phoneNumberLength < 4) return phoneNumber;
+    if (phoneNumberLength < 7) {
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    }
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formattedPhoneNumber = formatPhoneNumber(e.target.value);
+    setFormData({ ...formData, phone: formattedPhoneNumber });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Zapier Webhook Integration
+    const zapierWebhookUrl = "https://hooks.zapier.com/hooks/catch/27033536/unzr80d/";
+    
+    if (zapierWebhookUrl) {
+      try {
+        // Zapier Webhooks accept POST requests naturally
+        await fetch(zapierWebhookUrl, {
+          method: 'POST',
+          body: JSON.stringify(formData)
+        });
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
+    }
+    
+    setIsSubmitted(true);
+  };
+
+  return (
+    <div className="app-container">
+      {/* HEADER */}
+      <header className="navbar">
+        <div className="container">
+          <div className="logo">Finally, <span>you're here.</span></div>
+          <nav className="nav-links">
+            <a href="#about">About</a>
+            <a href="#event">The Game</a>
+            <a href="#past-performances">Past Performances</a>
+            <a href="#register" className="nav-cta">Register</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* HERO SECTION */}
+      <section className="hero">
+        <div className="container hero-grid">
+          <div className="hero-content">
+            <div className="badge">June 14th, 2026 • Nationals Game</div>
+            <h1 className="hero-title">
+              <span className="highlight">Free</span> In-Person Voice Lessons in DC
+            </h1>
+            <p className="hero-subtitle">
+              Get premium vocal coaching for <span style={{ textDecoration: 'line-through', opacity: 0.7 }}>$112</span> <strong style={{ color: 'var(--nat-red)', fontSize: '1.2em' }}>FREE</strong>!
+              <br/>
+              <em>(And if you want, singing in the National Anthem game!)</em>
+            </p>
+
+            <div className="lesson-notice" style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '1.25rem', borderRadius: '12px', marginBottom: '2rem', borderLeft: '4px solid var(--nat-red)' }}>
+              <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: '1.5', textAlign: 'left' }}>
+                <strong>⚾ Fellas, thought it'd be cool to sing the National Anthem at a Nationals game? <span className="yup-stamp" style={{ fontSize: '1.1rem', padding: '0.1rem 0.5rem', transform: 'rotate(-5deg) translateY(-2px)', margin: '0 0 0 6px', boxShadow: '2px 2px 0px var(--nat-red)' }}>YUP!</span></strong>
+                <br/><br/>
+                Wouldn't you LOVE to be a Nationals Fan that has ALSO opened the game with the Star Spangled Banner? Thousands of people will hear it and LOVE IT. <em>(Optional add-on to your free lessons)</em>
+              </p>
+            </div>
+            
+            <div className="video-card glass-panel">
+              <div className="video-thumbnail vertical" style={{ padding: 0, background: '#000', overflow: 'hidden' }}>
+                <video 
+                  src="/promo.mp4" 
+                  controls 
+                  controlsList="nodownload"
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                />
+              </div>
+              <div className="video-caption">
+                "I guess you're watching this because you think it would be cool to sing the national anthem in front of thousands of people... What's stopping you?"
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-form-wrapper" id="register">
+            <div className="momentum-ticker glass-panel" style={{ border: '3px solid var(--nat-red)' }}>
+              <div className="ticker-label" style={{ color: 'var(--nat-red)' }}>Limited Availability</div>
+              <div className="ticker-numbers">
+                 <div className="ticker-new">6</div>
+              </div>
+              <div className="ticker-footer">
+                 <strong>Free Voice Lessons</strong> left to claim!
+              </div>
+            </div>
+
+            <div className="momentum-ticker glass-panel">
+              <div className="ticker-label">Event Momentum</div>
+              <div className="ticker-numbers">
+                 <div className="ticker-new">41</div>
+                 <div className="ticker-old" style={{ transform: 'rotate(3deg)' }}>
+                   21
+                   <div className="ticker-slash"></div>
+                 </div>
+              </div>
+              <div className="ticker-footer">
+                 People have signed up so far to sing with us on <strong>June 14th, 2026</strong>. <br/>(Updated every Monday)
+              </div>
+            </div>
+
+            <div className="registration-form glass-panel">
+              {isSubmitted ? (
+                <div className="success-message text-center" style={{ padding: '2rem 0' }}>
+                  <CheckCircle2 size={48} className="check-icon" style={{ margin: '0 auto 1rem' }} />
+                  <h3 className="form-title">We got your information!</h3>
+                  <p className="form-desc" style={{ marginBottom: 0 }}>
+                    We'll be in contact with you very soon! (We're real people, not AI, we'll reach out directly).
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <h3 className="form-title">Claim Your Spot</h3>
+                  <p className="form-desc">Fill out this form to get info on your free vocal lessons (or how to sing the Star-Spangled Banner with us!).</p>
+                  
+                  <form onSubmit={handleSubmit} className="form-fields">
+                    <div className="input-group">
+                      <label>Full Name</label>
+                      <input 
+                        type="text" 
+                        placeholder="John Doe" 
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        required 
+                      />
+                    </div>
+                    <div className="input-group">
+                      <label>Email</label>
+                      <input 
+                        type="email" 
+                        placeholder="john@example.com" 
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        required 
+                      />
+                    </div>
+                    <div className="input-group">
+                      <label>Phone Number</label>
+                      <input 
+                        type="tel" 
+                        placeholder="(555) 555-5555" 
+                        value={formData.phone}
+                        onChange={handlePhoneChange}
+                        maxLength={14}
+                        required 
+                      />
+                    </div>
+                    <button type="submit" className="cta-button primary">
+                      I want to get on that field! <ChevronRight size={20} />
+                    </button>
+                  </form>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS BAR */}
+      <section id="event" className="stats-bar">
+        <div className="container stats-grid">
+          <div className="stat-item">
+             <div className="stat-number">20</div>
+             <div className="stat-label">Years Experience</div>
+          </div>
+          <div className="stat-item">
+             <div className="stat-number">75</div>
+             <div className="stat-label">Guys on the Turf</div>
+          </div>
+          <div className="stat-item">
+             <div className="stat-number">300+</div>
+             <div className="stat-label">First-Timers</div>
+          </div>
+          <div className="stat-item">
+             <div className="stat-number">#1</div>
+             <div className="stat-label">Epic Performance</div>
+          </div>
+        </div>
+      </section>
+
+      {/* THE PITCH SECTION */}
+      <section id="about" className="pitch-section">
+        <div className="container pitch-grid">
+          <div className="pitch-text">
+            <h2>Think you can't sing?</h2>
+            <p className="lead-text">
+              If you think that you can't sing, it's because you've never had me as a director or sung with my buds.
+            </p>
+            <p>
+              This year, we're looking to put <strong>75 guys</strong> on that turf to do the most epic singing of the national anthem ever done.
+            </p>
+            <ul className="pitch-benefits">
+              <li><CheckCircle2 className="check-icon" /> Professional vocal direction</li>
+              <li><CheckCircle2 className="check-icon" /> Sing alongside 75 fellow Nationals fans</li>
+            </ul>
+          </div>
+          <div className="pitch-video-showcase" id="past-performances">
+            <div className="action-marquee top">
+              <div className="marquee-content">
+                 <span className="singer-name">John David Maybury will be singing!</span>
+                 <span className="singer-name">Bob Hirsh will be singing!</span>
+                 <span className="singer-name">Stanley Marcuss will be singing!</span>
+                 <span className="singer-name">Miles Luther will be singing!</span>
+                 <span className="singer-name">John David Maybury will be singing!</span>
+                 <span className="singer-name">Bob Hirsh will be singing!</span>
+                 <span className="singer-name">Stanley Marcuss will be singing!</span>
+                 <span className="singer-name">Miles Luther will be singing!</span>
+              </div>
+            </div>
+            
+            <div className="pitch-image video-focused" style={{ padding: 0, background: '#000' }}>
+              <video 
+                src="/new-performance.mp4" 
+                controls 
+                controlsList="nodownload"
+                style={{ width: '100%', height: '100%', objectFit: 'contain', position: 'absolute', top: 0, left: 0, zIndex: 5 }}
+              />
+            </div>
+
+            <div className="action-marquee bottom">
+              <div className="marquee-content reverse" style={{ animationDuration: '60s' }}>
+                 <span className="singer-name alt-color">John David Maybury will be singing!</span>
+                 <span className="singer-name alt-color">Bob Hirsh will be singing!</span>
+                 <span className="singer-name alt-color">Stanley Marcuss will be singing!</span>
+                 <span className="singer-name alt-color">Miles Luther will be singing!</span>
+                 <span className="singer-name alt-color">Brian Kuhn will be singing!</span>
+                 <span className="singer-name alt-color">Justin Kirby II will be singing!</span>
+                 <span className="singer-name alt-color">Christopher Limjuco will be singing!</span>
+                 <span className="singer-name alt-color">Collin Wicker will be singing!</span>
+                 <span className="singer-name alt-color">Robert Korsan will be singing!</span>
+                 <span className="singer-name alt-color">Ryan Gravelle will be singing!</span>
+                 <span className="singer-name alt-color">Daniel Robinson will be singing!</span>
+                 <span className="singer-name alt-color">Patrick Wathen will be singing!</span>
+                 <span className="singer-name alt-color">John Machado will be singing!</span>
+                 <span className="singer-name alt-color">Anthony Richardson will be singing!</span>
+                 <span className="singer-name alt-color">Joshua Butson will be singing!</span>
+                 <span className="singer-name alt-color">John Terrill will be singing!</span>
+                 <span className="singer-name alt-color">Bob Ruckle will be singing!</span>
+                 <span className="singer-name alt-color">Jim Lake will be singing!</span>
+                 {/* Duplicate the list so it seamlessly loops from -50% */}
+                 <span className="singer-name alt-color">John David Maybury will be singing!</span>
+                 <span className="singer-name alt-color">Bob Hirsh will be singing!</span>
+                 <span className="singer-name alt-color">Stanley Marcuss will be singing!</span>
+                 <span className="singer-name alt-color">Miles Luther will be singing!</span>
+                 <span className="singer-name alt-color">Brian Kuhn will be singing!</span>
+                 <span className="singer-name alt-color">Justin Kirby II will be singing!</span>
+                 <span className="singer-name alt-color">Christopher Limjuco will be singing!</span>
+                 <span className="singer-name alt-color">Collin Wicker will be singing!</span>
+                 <span className="singer-name alt-color">Robert Korsan will be singing!</span>
+                 <span className="singer-name alt-color">Ryan Gravelle will be singing!</span>
+                 <span className="singer-name alt-color">Daniel Robinson will be singing!</span>
+                 <span className="singer-name alt-color">Patrick Wathen will be singing!</span>
+                 <span className="singer-name alt-color">John Machado will be singing!</span>
+                 <span className="singer-name alt-color">Anthony Richardson will be singing!</span>
+                 <span className="singer-name alt-color">Joshua Butson will be singing!</span>
+                 <span className="singer-name alt-color">John Terrill will be singing!</span>
+                 <span className="singer-name alt-color">Bob Ruckle will be singing!</span>
+                 <span className="singer-name alt-color">Jim Lake will be singing!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default App;

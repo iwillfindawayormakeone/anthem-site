@@ -8,10 +8,37 @@
   <meta property="og:title" content="Free Live Training: Leave at the Bell" />
   <meta property="og:description" content="How teachers are reclaiming 15+ hours a week and walking out when their students do. And no, it's not grade less, discipline, or time management." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="hero.jpg" />
+  <!-- LAUNCH TODO: og:image and og:url MUST be full absolute URLs (https://...) once the
+       domain is set, or Facebook/iMessage previews will show no image. See README. -->
+  <!-- <meta property="og:image" content="https://YOUR-DOMAIN/webinar/hero.jpg" /> -->
+  <!-- <meta property="og:url" content="https://YOUR-DOMAIN/webinar/" /> -->
+  <!-- <link rel="canonical" href="https://YOUR-DOMAIN/webinar/" /> -->
+  <meta name="theme-color" content="#16202e" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%94%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Fonts load async so a slow font CDN can never block the page from rendering;
+       fallback serif/sans show instantly and swap when the webfonts arrive. -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+  <!-- LAUNCH TODO: keep startDate in sync with CONFIG.webinarDate, and set the url/
+       organizer url to the real domain. Eligible for Google event rich results. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationEvent",
+    "name": "Free Live Training: Leave at the Bell",
+    "description": "Free live training for K-12 teachers who feel overworked: how to walk out at the final bell with your work actually done — and feel more accomplished than you ever did staying late.",
+    "startDate": "2026-08-06T19:00:00-04:00",
+    "endDate": "2026-08-06T20:00:00-04:00",
+    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "isAccessibleForFree": true,
+    "location": { "@type": "VirtualLocation", "url": "https://zoom.us" },
+    "organizer": { "@type": "Person", "name": "JD — AI Clock Out Teacher" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  }
+  </script>
   <style>
     /* ============================================================
        LEAVE AT THE BELL — WEBINAR REGISTRATION PAGE
@@ -145,8 +172,10 @@
       padding: 30px 28px;
       box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
     }
-    .reg-card h3 {
+    .reg-card .reg-title {
+      font-family: var(--font-display);
       font-size: 1.3rem;
+      line-height: 1.15;
       margin-bottom: 4px;
     }
     .reg-card .seats {
@@ -193,6 +222,10 @@
     .btn:hover { background: var(--gold-deep); }
     .btn:active { transform: scale(0.985); }
     .btn[disabled] { opacity: 0.7; cursor: wait; }
+    .btn:focus-visible, a:focus-visible, input:focus-visible {
+      outline: 3px solid var(--bell);
+      outline-offset: 2px;
+    }
     .form-note {
       margin-top: 12px;
       font-size: 0.8rem;
@@ -204,7 +237,7 @@
       padding: 18px 6px 6px;
       text-align: center;
     }
-    .form-success h4 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 8px; color: var(--ok); }
+    .form-success h3 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 8px; color: var(--ok); }
     .form-success p { font-size: 0.92rem; color: var(--ink-soft); }
     .form-error { display: none; margin-top: 10px; font-size: 0.85rem; color: #c0392b; text-align: center; }
     .cal-btn { margin-top: 14px; width: auto; padding: 12px 20px; font-size: 0.92rem; }
@@ -272,7 +305,7 @@
     .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; text-align: center; }
     .stat b { display: block; font-family: var(--font-display); font-size: clamp(1.9rem, 4vw, 2.6rem); color: var(--gold); }
     .stat span { font-size: 0.92rem; color: rgba(255, 255, 255, 0.82); display: block; max-width: 24em; margin: 6px auto 0; }
-    .stats .src { text-align: center; font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-top: 26px; }
+    .stats .src { text-align: center; font-size: 0.72rem; color: rgba(255,255,255,0.65); margin-top: 26px; }
 
     /* ---------- host ---------- */
     .host { background: var(--paper); }
@@ -389,12 +422,14 @@
           <h1>Walk out at the final bell with your work <em>actually done</em> — and feel more accomplished than you ever did staying late.</h1>
           <p class="kicker"><strong>And no — it's not "grade less," discipline, or time management.</strong> In one free hour, an 18-year classroom veteran shows you how teachers are reclaiming 15+ hours a week, without the guilt that they're somehow cheating.</p>
           <div class="hero-when">
-            <span><svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 16H5V9h14zM5 7V5h14v2z"/></svg><span data-cfg="dateLabel">Thursday, August 6</span></span>
-            <span><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7z"/></svg><span data-cfg="timeLabel">7:00 PM Eastern</span></span>
-            <span><svg viewBox="0 0 24 24"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11z"/></svg><span data-cfg="platformLabel">Live on Zoom</span></span>
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 16H5V9h14zM5 7V5h14v2z"/></svg><span data-cfg="dateLabel">Thursday, August 6</span></span>
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7z"/></svg><span data-cfg="timeLabel">7:00 PM Eastern</span></span>
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11z"/></svg><span data-cfg="platformLabel">Live on Zoom</span></span>
           </div>
           <p class="cd-caption" id="cd-caption">The free training starts in</p>
-          <div class="countdown" id="countdown" aria-label="Time until the training starts">
+          <!-- aria-hidden: the ticking numbers would be announced every second; the
+               date/time text above carries the same information accessibly. -->
+          <div class="countdown" id="countdown" aria-hidden="true">
             <div class="cd-cell"><b id="cd-d">–</b><small>days</small></div>
             <div class="cd-cell"><b id="cd-h">–</b><small>hours</small></div>
             <div class="cd-cell"><b id="cd-m">–</b><small>min</small></div>
@@ -403,7 +438,7 @@
         </div>
 
         <div class="reg-card" id="register">
-          <h3>Save your free seat</h3>
+          <h2 class="reg-title">Save your free seat</h2>
           <p class="seats">Seats on the live call are limited — and this is taught <b>live</b>, with open Q&amp;A. A replay is not guaranteed.</p>
           <form id="reg-form" novalidate>
             <div class="field">
@@ -415,11 +450,11 @@
               <input type="email" id="email" name="EMAIL" autocomplete="email" placeholder="you@example.com" required />
             </div>
             <button class="btn" type="submit" id="reg-btn">Save My Free Seat</button>
-            <p class="form-error" id="form-error">Something went wrong — please check your email address and try again.</p>
+            <p class="form-error" role="alert">Something went wrong — please check your email address and try again.</p>
             <p class="form-note">100% free. No spam — just your seat link and a reminder. Unsubscribe anytime.</p>
           </form>
-          <div class="form-success" id="form-success">
-            <h4>You're in! 🔔</h4>
+          <div class="form-success" role="status">
+            <h3>You're in! 🔔</h3>
             <p>Check your inbox for your seat link. (If it's not there in 5 minutes, peek at spam and drag it out — you don't want to miss this one.)</p>
             <a class="btn cal-btn" data-cal href="#" target="_blank" rel="noopener">📅 Add it to my calendar now</a>
           </div>
@@ -532,7 +567,7 @@
         <p class="when-line"><span data-cfg="dateLabel">Thursday, August 6</span> · <span data-cfg="timeLabel">7:00 PM Eastern</span> · <span data-cfg="platformLabel">Live on Zoom</span></p>
       </div>
       <div class="reg-card reveal">
-        <h3>Save your free seat</h3>
+        <h3 class="reg-title">Save your free seat</h3>
         <p class="seats">Live only, with open Q&amp;A. A replay is not guaranteed.</p>
         <form class="reg-form-2" novalidate>
           <div class="field">
@@ -544,11 +579,11 @@
             <input type="email" id="email2" name="EMAIL" autocomplete="email" placeholder="you@example.com" required />
           </div>
           <button class="btn" type="submit">Save My Free Seat</button>
-          <p class="form-error">Something went wrong — please check your email address and try again.</p>
+          <p class="form-error" role="alert">Something went wrong — please check your email address and try again.</p>
           <p class="form-note">100% free. No spam — just your seat link and a reminder.</p>
         </form>
-        <div class="form-success">
-          <h4>You're in! 🔔</h4>
+        <div class="form-success" role="status">
+          <h3>You're in! 🔔</h3>
           <p>Check your inbox for your seat link. (If it's not there in 5 minutes, peek at spam.)</p>
           <a class="btn cal-btn" data-cal href="#" target="_blank" rel="noopener">📅 Add it to my calendar now</a>
         </div>
@@ -639,10 +674,14 @@
         const name = form.querySelector("input[name=FIRSTNAME]");
         const email = form.querySelector("input[name=EMAIL]");
         let ok = true;
-        [name, email].forEach(i => i.classList.remove("invalid"));
-        if (!name.value.trim()) { name.classList.add("invalid"); ok = false; }
-        if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add("invalid"); ok = false; }
-        if (!ok) return;
+        [name, email].forEach(i => { i.classList.remove("invalid"); i.removeAttribute("aria-invalid"); });
+        if (!name.value.trim()) { name.classList.add("invalid"); name.setAttribute("aria-invalid", "true"); ok = false; }
+        if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add("invalid"); email.setAttribute("aria-invalid", "true"); ok = false; }
+        if (!ok) {
+          error.textContent = "Please fill in your first name and a valid email address.";
+          error.style.display = "block";
+          return;
+        }
 
         btn.disabled = true;
         btn.textContent = "Saving your seat…";
@@ -657,10 +696,11 @@
           }
           if (CONFIG.thankYouUrl) { window.location.href = CONFIG.thankYouUrl; return; }
           form.style.display = "none";
-          card.querySelector("h3").style.display = "none";
+          card.querySelector(".reg-title").style.display = "none";
           card.querySelector(".seats").style.display = "none";
           success.style.display = "block";
         } catch (err) {
+          error.textContent = "Something went wrong — please check your email address and try again.";
           error.style.display = "block";
           btn.disabled = false;
           btn.textContent = "Save My Free Seat";

@@ -6,9 +6,13 @@
   <title>You're In — Leave at the Bell Free Training</title>
   <meta name="robots" content="noindex" />
   <meta name="description" content="Your seat is saved. Three quick steps to make sure you actually make it to the live training." />
+  <meta name="theme-color" content="#16202e" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%94%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Fonts load async so a slow font CDN can never block the page from rendering. -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
   <style>
     :root {
       --ink: #1e2a3a;
@@ -102,6 +106,10 @@
     }
     .btn:hover { background: var(--gold-deep); }
     .btn:active { transform: scale(0.985); }
+    .btn:focus-visible, a:focus-visible {
+      outline: 3px solid var(--bell);
+      outline-offset: 2px;
+    }
 
     .homework {
       background: var(--paper-deep);
@@ -148,7 +156,7 @@
   <div class="top">
     <div class="wrap">
       <p class="brandmark">🔔 AI Clock Out Teacher</p>
-      <div class="check">✓</div>
+      <div class="check" aria-hidden="true">✓</div>
       <h1>Your seat is saved. <em>Don't let it sit empty.</em></h1>
       <p>Your confirmation and seat link are on the way to your inbox right now. This is taught live, once — and the teachers who show up live are the ones who walk out with something built.</p>
       <p class="when"><span data-cfg="dateLabel">Thursday, August 6</span> · <span data-cfg="timeLabel">7:00 PM Eastern</span> · <span data-cfg="platformLabel">Live on Zoom</span></p>

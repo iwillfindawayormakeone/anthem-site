@@ -4,7 +4,10 @@
 # runs on a GitHub runner instead.) Safe to delete once assets/img is populated.
 name: Fetch site images
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/arianas-little-star-site-fxx0vt]
 
 permissions:
   contents: write
@@ -15,9 +18,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download and optimize images
+      - name: Download, optimize, and commit images
         run: |
           set -euo pipefail
+          if [ -f assets/img/hero-playroom.jpg ]; then
+            echo "Images already present — nothing to do."
+            exit 0
+          fi
+
           mkdir -p assets/img /tmp/raw
           base="https://d8j0ntlcm91z4.cloudfront.net/user_3Eo0plEBHjUHQRD43deljO310QH"
 
@@ -46,8 +54,6 @@ jobs:
           done
           ls -la assets/img
 
-      - name: Commit images
-        run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/img

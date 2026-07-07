@@ -47,11 +47,20 @@ jobs:
           done
 
           # hero: wide, higher res; portrait: tall; gallery: 1200px wide
-          convert /tmp/raw/hero-playroom.png    -resize 1920x -quality 82 -strip assets/img/hero-playroom.jpg
-          convert /tmp/raw/ariana-portrait.png  -resize 1000x -quality 82 -strip assets/img/ariana-portrait.jpg
-          for g in backyard art mealtime story nap water reading mixed-age; do
-            convert "/tmp/raw/gallery-$g.png" -resize 1200x -quality 80 -strip "assets/img/gallery-$g.jpg"
-          done
+          pip install --quiet pillow
+          python3 - <<'PY'
+          from PIL import Image
+          jobs = [("hero-playroom", 1920, 82), ("ariana-portrait", 1000, 82)] + [
+              (f"gallery-{g}", 1200, 80)
+              for g in ["backyard", "art", "mealtime", "story", "nap", "water", "reading", "mixed-age"]
+          ]
+          for name, width, quality in jobs:
+              im = Image.open(f"/tmp/raw/{name}.png").convert("RGB")
+              if im.width > width:
+                  im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
+              im.save(f"assets/img/{name}.jpg", "JPEG", quality=quality, optimize=True, progressive=True)
+              print(name, im.size)
+          PY
           ls -la assets/img
 
           git config user.name "github-actions[bot]"

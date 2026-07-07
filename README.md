@@ -43,18 +43,19 @@ python3 -m http.server 8080
 # then open http://localhost:8080
 ```
 
-## Deploy (free options)
+## Deploy
 
-- **Netlify** — drag-and-drop the folder at [app.netlify.com/drop](https://app.netlify.com/drop), or connect this repo (no build command, publish directory: `/`).
-- **GitHub Pages** — repo Settings → Pages → deploy from branch, root folder.
-- **Cloudflare Pages / Vercel** — connect the repo, framework preset "None".
+The site auto-deploys to **GitHub Pages** on every push to `main`
+(`.github/workflows/deploy-pages.yml`) at:
 
-Then point your domain at it and update the canonical/OG URLs.
+> https://iwillfindawayormakeone.github.io/anthem-site/
+
+To use a custom domain instead: repo Settings → Pages → Custom domain, then
+update the canonical/OG URLs in `index.html`. Netlify, Cloudflare Pages, and
+Vercel also work (static site, no build command) if you ever want to switch.
 
 ## Imagery
 
 All photos are AI-generated (Higgsfield Soul 2.0) — warm, film-like, and containing
 no identifiable real children. Regeneration prompts live in
-[IMAGE-BRIEFS.md](IMAGE-BRIEFS.md). The one-shot workflow
-`.github/workflows/fetch-images.yml` downloaded and optimized them; it's safe to
-delete along with this note once you're happy with the images.
+[IMAGE-BRIEFS.md](IMAGE-BRIEFS.md).

@@ -36,6 +36,7 @@
 /* ---------- Reset & base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 84px; } /* keep anchored headings clear of the sticky header */
 body {
   margin: 0;
   font-family: var(--font-body);
